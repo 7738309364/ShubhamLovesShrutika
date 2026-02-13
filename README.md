@@ -1,2 +1,0 @@
-# ShubhamLovesShrutika
-Portfolio Website
