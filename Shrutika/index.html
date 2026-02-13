@@ -2,22 +2,109 @@
 <html>
 <head>
     <title>For Shrutika ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
 </head>
 <body>
 
-<audio autoplay loop>
-    <source src="music.mp3" type="audio/mpeg">
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="Assets/music.mp3" type="audio/mpeg">
 </audio>
 
+<script>
+document.addEventListener("click", function () {
+    document.getElementById("bgMusic").play();
+}, { once: true });
+</script>
+
 <div class="container">
-    <h1>Happy Valentine's Day Shrutika ❤️</h1>
-    <p>You are my favorite notification 😏</p>
-    <button onclick="goTo('reasons.html')">Click if you love me ❤️</button>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page">
+        <h1>Happy Valentine's Day Babe ❤️</h1>
+        <p>You are my favorite notification 😏</p>
+        <button onclick="showPage('reasons')">Click if you love me ❤️</button>
+    </div>
+
+    <!-- REASONS PAGE -->
+    <div id="reasons" class="page" style="display:none;">
+        <h1>10 Reasons Why I Love You ❤️</h1>
+        <p>1. Your smile > Everything 😍</p>
+        <p>2. You handle my drama 😂</p>
+        <p>3. You look cute even when angry 😆</p>
+        <p>4. You make my bad days better 🌟</p>
+        <p>5. You are my peace 🕊️</p>
+        <p>6. You are my chaos too 😏</p>
+        <p>7. You support my dreams ✨</p>
+        <p>8. You are beautiful inside & outside 💖</p>
+        <p>9. You chose me ❤️</p>
+        <p>10. Because you're my Kaleshi Aurat. That's enough. 👑</p>
+
+        <button onclick="showPage('memories')">Next 💕</button>
+    </div>
+
+    <!-- MEMORIES PAGE -->
+    <div id="memories" class="page" style="display:none;">
+        <h1>My Rasmalai ❤️</h1>
+        <img src="Assets/img1.jpeg" alt="Memory 1">
+        <img src="Assets/img2.jpeg" alt="Memory 2">
+        <img src="Assets/img3.jpeg" alt="Memory 3">
+        <img src="Assets/img4.jpeg" alt="Memory 4">
+        <img src="Assets/img5.jpeg" alt="Memory 5">
+
+        <button onclick="showPage('surprise')">Final Surprise 😍</button>
+    </div>
+
+    <!-- SURPRISE PAGE -->
+    <div id="surprise" class="page" style="display:none;">
+        <h1>Babe ❤️</h1>
+        <h2>Will you be my forever Valentine? 💍</h2>
+
+        <button onclick="alert('I knew it 😎❤️')">YES ❤️</button>
+        <button id="noBtn"
+            onmouseover="moveNoButton()"
+            ontouchstart="moveNoButton()">
+            NO 😜
+        </button>
+    </div>
+
 </div>
 
-<script src="script.js"></script>
+<script>
+function showPage(pageId) {
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+    
+    // Show the selected page
+    document.getElementById(pageId).style.display = 'block';
+}
+
+function moveNoButton() {
+    const btn = document.getElementById("noBtn");
+
+    const maxX = window.innerWidth - btn.offsetWidth - 20;
+    const maxY = window.innerHeight - btn.offsetHeight - 20;
+
+    btn.style.position = "fixed";
+    btn.style.left = Math.random() * maxX + "px";
+    btn.style.top = Math.random() * maxY + "px";
+    btn.style.transition = "all 0.3s ease";
+}
+
+// Prevent NO button click
+document.addEventListener('DOMContentLoaded', function() {
+    const noBtn = document.getElementById('noBtn');
+    if (noBtn) {
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            moveNoButton();
+        });
+    }
+});
+</script>
+
 </body>
 </html>
